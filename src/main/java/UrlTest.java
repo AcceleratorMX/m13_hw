@@ -50,8 +50,7 @@ public class UrlTest {
         System.out.println("--------------------------------------------------------");
 
         //  Task 3
-        int todosUserId = 1;
-        Utils.findAndWriteTodos(URI.create(DEFAULT_USERS), todosUserId);
+        Utils.findAndWriteTodos(URI.create(DEFAULT_USERS), 1);
     }
 }
 

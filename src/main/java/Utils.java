@@ -132,9 +132,9 @@ public class Utils {
         writer.close();
     }
 
-    public static void findAndWriteTodos(URI uri, int todosUserId) throws Exception {
+    public static void findAndWriteTodos(URI uri, int userId) throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(uri + "/users/" + todosUserId + "/todos"))
+                .uri(URI.create(uri + "/users/" + userId + "/todos"))
                 .build();
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         JSONArray todos = new JSONArray(response.body());
@@ -146,7 +146,7 @@ public class Utils {
             }
         }
         System.out.println("Uncomplited todos find.");
-        FileWriter writer = new FileWriter("user-" + todosUserId + "-uncompleted-todos.json");
+        FileWriter writer = new FileWriter("user-" + userId + "-uncompleted-todos.json");
         new GsonBuilder().setPrettyPrinting().create().toJson(completedTodos, writer);
         writer.close();
         System.out.println("File writed");
